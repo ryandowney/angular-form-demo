@@ -1,0 +1,29 @@
+<form>
+  <div class="form-row">
+    <div class="mb-3">
+      <label for="Instructor" class="form-label">Instructor</label>
+      <select id="Instructor" class="form-control" required>
+        <option value="">Please select an instructor</option>
+        <option *ngFor="let instructor of instructors" [value]="instructor.value">
+          {{ instructor.name }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="Title" class="form-label">Workshop Title</label>
+    <input type="text" class="form-control" id="title" required placeholder="Workshop Title">
+  </div>
+  <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" rows="3" placeholder="Description"></textarea>
+  </div>
+  <div class="mb-3">
+      <label for="linkedInProfile" class="form-label">LinkedIn Profile</label>
+      <input type="text" class="form-control" id="linkedInProfile" placeholder="LinkedIn Profile">
+  </div>
+  <div class="mb-3">
+      <label for="gitHubRepository" class="form-label">GitHub Repository</label>
+      <input type="text" class="form-control" id="gitHubRepository" placeholder="GitHub Repository">
+  </div>
+</form>
