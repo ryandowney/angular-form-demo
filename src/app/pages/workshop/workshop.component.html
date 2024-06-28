@@ -1,4 +1,22 @@
-<div class="container mt-5">
-  <app-workshop-details></app-workshop-details>
-  <app-workshop-attendees></app-workshop-attendees>
-</div>
+@if (showForm) {
+  <div class="container mt-5">
+    <form [formGroup]="workshopForm">
+      <app-workshop-details [workshop]="workshop"></app-workshop-details>
+      <app-workshop-attendees
+        [attendees]="workshop.attendees"></app-workshop-attendees>
+    </form>
+
+    <div class="mt-3 d-flex justify-content-end">
+      <button type="button" class="btn btn-secondary me-2" (click)="logForm()">
+        Log Form
+      </button>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="saveChanges()"
+        [disabled]="!formValid">
+        Save Changes
+      </button>
+    </div>
+  </div>
+}

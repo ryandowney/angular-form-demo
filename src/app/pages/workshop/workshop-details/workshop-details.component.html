@@ -1,29 +1,96 @@
-<form>
-  <div class="form-row">
-    <div class="mb-3">
-      <label for="Instructor" class="form-label">Instructor</label>
-      <select id="Instructor" class="form-control" required>
-        <option value="">Please select an instructor</option>
-        <option *ngFor="let instructor of instructors" [value]="instructor.value">
-          {{ instructor.name }}
-        </option>
-      </select>
+<form [formGroup]="workRequestDetailsForm">
+  <!-- instructor -->
+  <div class="mb-3">
+    <label for="Instructor" class="form-label"
+      >Instructor <span class="required-asterisk">*</span></label
+    >
+    <select
+      id="Instructor"
+      class="form-control"
+      formControlName="instructorId"
+      required>
+      <option *ngFor="let instructor of instructors" [value]="instructor.value">
+        {{ instructor.name }}
+      </option>
+    </select>
+    <div
+      *ngIf="
+        workRequestDetailsForm.controls.instructorId.touched &&
+        workRequestDetailsForm.controls.instructorId.invalid
+      "
+      class="text-danger">
+      <small *ngIf="workRequestDetailsForm.controls.title"
+        >Workshop title is required.</small
+      >
     </div>
   </div>
+
+  <!-- workshop title -->
   <div class="mb-3">
-    <label for="Title" class="form-label">Workshop Title</label>
-    <input type="text" class="form-control" id="title" required placeholder="Workshop Title">
+    <label for="Title" class="form-label"
+      >Workshop Title <span class="required-asterisk">*</span></label
+    >
+    <input
+      type="text"
+      formControlName="title"
+      class="form-control"
+      id="title"
+      required
+      placeholder="Workshop Title" />
+    <div
+      *ngIf="
+        workRequestDetailsForm.controls.title.touched &&
+        workRequestDetailsForm.controls.title.invalid
+      "
+      class="text-danger">
+      <small *ngIf="workRequestDetailsForm.controls.title"
+        >Workshop title is required.</small
+      >
+    </div>
   </div>
+
+  <!-- description -->
   <div class="mb-3">
-      <label for="description" class="form-label">Description</label>
-      <textarea class="form-control" id="description" rows="3" placeholder="Description"></textarea>
+    <label for="description" class="form-label"
+      >Description <span class="required-asterisk">*</span></label
+    >
+    <textarea
+      class="form-control"
+      id="description"
+      rows="3"
+      placeholder="Description"
+      formControlName="description"></textarea>
+    <div
+      *ngIf="
+        workRequestDetailsForm.controls.description.touched &&
+        workRequestDetailsForm.controls.description.invalid
+      "
+      class="text-danger">
+      <small *ngIf="workRequestDetailsForm.controls.title"
+        >Description is required.</small
+      >
+    </div>
   </div>
+
+  <!-- linkedin url -->
   <div class="mb-3">
-      <label for="linkedInProfile" class="form-label">LinkedIn Profile</label>
-      <input type="text" class="form-control" id="linkedInProfile" placeholder="LinkedIn Profile">
+    <label for="linkedInProfile" class="form-label">LinkedIn Profile</label>
+    <input
+      type="text"
+      class="form-control"
+      id="linkedInProfile"
+      placeholder="LinkedIn Profile"
+      formControlName="linkedInUrl" />
   </div>
+
+  <!-- github repository -->
   <div class="mb-3">
-      <label for="gitHubRepository" class="form-label">GitHub Repository</label>
-      <input type="text" class="form-control" id="gitHubRepository" placeholder="GitHub Repository">
+    <label for="gitHub" class="form-label">GitHub</label>
+    <input
+      type="text"
+      class="form-control"
+      id="gitHub"
+      placeholder="GitHub"
+      formControlName="gitHubUrl" />
   </div>
 </form>
