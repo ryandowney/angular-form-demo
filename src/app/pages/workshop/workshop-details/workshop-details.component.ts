@@ -12,12 +12,9 @@ import { Workshop } from 'src/app/contracts/workshop';
   selector: 'app-workshop-details',
   templateUrl: './workshop-details.component.html',
   styleUrls: ['./workshop-details.component.scss'],
-  viewProviders: [
-    { provide: ControlContainer, useExisting: FormGroupDirective },
-  ],
 })
 export class WorkshopDetailsComponent implements OnInit {
-  constructor(private parent: FormGroupDirective) {}
+  constructor() {}
   @Input() workshop!: Workshop;
   private parentForm!: FormGroup;
   private formName = WorkshopFormNames.Details;
@@ -26,8 +23,8 @@ export class WorkshopDetailsComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.parentForm = this.parent.form;
-    this.parentForm.setControl(this.formName, this.buildForm(this.workshop));
+    // this.parentForm = this.parent.form;
+    // this.parentForm.setControl(this.formName, this.buildForm(this.workshop));
   }
 
   protected get workRequestDetailsForm(): FormGroup<WorkshopDetailsForm> {
