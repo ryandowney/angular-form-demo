@@ -5,9 +5,10 @@ import {
   FormGroupDirective,
   Validators,
 } from '@angular/forms';
-import { WorkshopFormNames } from '../workshop-form-names';
+import { WorkshopFormNames } from '../forms/workshop-form-names';
 import { Workshop } from 'src/app/contracts/workshop';
 import { emptyGuid } from 'src/app/const';
+import { WorkshopDetailsForm } from '../forms/workshop-details-form';
 
 @Component({
   selector: 'app-workshop-details',
@@ -48,15 +49,6 @@ export class WorkshopDetailsComponent implements OnInit {
       gitHubUrl: new FormControl(workshop.gitHubUrl),
     });
   };
-}
-
-export interface WorkshopDetailsForm {
-  id: FormControl<Guid | null>;
-  instructorId: FormControl<Guid | null>;
-  title: FormControl<string | null>;
-  description: FormControl<string | null>;
-  linkedInUrl: FormControl<string | null>;
-  gitHubUrl: FormControl<string | null>;
 }
 
 export interface Instructor {

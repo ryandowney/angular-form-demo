@@ -1,1 +1,92 @@
-<p>workshop-attendee works!</p>
+<form [formGroup]="attendeeFrom" class="form-inline mt-3">
+  <div class="row g-3 align-items-center">
+    <!-- name -->
+    <div class="col-sm">
+      <label for="name">Name <span class="required-asterisk">*</span></label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+        placeholder="Enter Name" />
+      <div
+        *ngIf="
+          attendeeFrom.controls.name.touched &&
+          attendeeFrom.controls.name.invalid
+        "
+        class="text-danger">
+        <small *ngIf="attendeeFrom.controls.name">Name is required.</small>
+      </div>
+    </div>
+
+    <!-- experience level -->
+    <div class="col-sm">
+      <label for="experience"
+        >Experience Level <span class="required-asterisk">*</span></label
+      >
+      <select class="form-control" id="experience" formControlName="experience">
+        <option *ngFor="let option of experienceOptions" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+      <div
+        *ngIf="
+          attendeeFrom.controls.experience.touched &&
+          attendeeFrom.controls.experience.invalid
+        "
+        class="text-danger">
+        <small *ngIf="attendeeFrom.controls.experience"
+          >Experience level is required.</small
+        >
+      </div>
+    </div>
+
+    <!-- dine in -->
+    <div class="col-sm">
+      <label for="dineIn"
+        >Dine In <span class="required-asterisk">*</span></label
+      >
+      <select class="form-control" id="dineIn" formControlName="dineIn">
+        <option [ngValue]="true">Yes</option>
+        <option [ngValue]="false">No</option>
+      </select>
+      <div
+        *ngIf="
+          attendeeFrom.controls.dineIn.touched &&
+          attendeeFrom.controls.dineIn.invalid
+        "
+        class="text-danger">
+        <small *ngIf="attendeeFrom.controls.dineIn">Dine in is required.</small>
+      </div>
+    </div>
+
+    <!-- lunch choice -->
+    <div class="col-sm">
+      <label for="lunchChoice"
+        >Lunch Choice
+        <span
+          *ngIf="attendeeFrom.controls.lunchChoice.enabled"
+          class="required-asterisk"
+          >*</span
+        ></label
+      >
+      <select
+        class="form-control"
+        id="lunchChoice"
+        formControlName="lunchChoice">
+        <option *ngFor="let option of lunchOptions" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-auto">
+      <button
+        type="button"
+        class="btn btn-danger mt-4"
+        (click)="removeAttendee()">
+        Delete
+      </button>
+    </div>
+  </div>
+</form>

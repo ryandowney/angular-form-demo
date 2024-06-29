@@ -1,34 +1,11 @@
-<h4 class="my-3">Attendees</h4>
-
-<form>
-  <div class="row">
-    <div class="col-3"> <!-- Adjusted to take up 3 columns -->
-      <input type="text" class="form-control" placeholder="Name">
-    </div>
-    <div class="col-3"> <!-- Adjusted to take up 3 columns -->
-      <select class="form-control">
-        <option selected>Experience Level</option>
-        <option value="beginner">Beginner</option>
-        <option value="intermediate">Intermediate</option>
-        <option value="advanced">Advanced</option>
-        <option value="expert">Expert</option>
-      </select>
-    </div>
-    <div class="col-3"> <!-- Adjusted to take up 3 columns -->
-      <select class="form-control">
-        <option selected>Dine In/Out</option>
-        <option value="dine_in">Dine In</option>
-        <option value="dine_out">Dine Out</option>
-      </select>
-    </div>
-    <div class="col-3"> <!-- Adjusted to take up 3 columns -->
-      <select class="form-control">
-        <option selected>Lunch Choice</option>
-        <option value="pizza">Pizza</option>
-        <option value="salad">Salad</option>
-        <option value="sandwich">Sandwich</option>
-        <option value="pasta">Pasta</option>
-      </select>
-    </div>
-  </div>
-</form>
+<h4 class="mt-3">Attendees</h4>
+<div
+  *ngFor="let attendeeForm of workRequestAttendeesForm.controls; let i = index">
+  <app-workshop-attendee
+    [attendeeFrom]="attendeeForm"
+    [index]="i"
+    (removeAttendeeEmitter)="removeAttendee($event)"></app-workshop-attendee>
+</div>
+<div class="text-left mt-3">
+  <button class="btn btn-primary" (click)="addAttendee()">Add Attendee</button>
+</div>

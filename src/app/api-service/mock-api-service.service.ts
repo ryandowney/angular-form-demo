@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Workshop } from '../contracts/workshop';
 import { Observable, of } from 'rxjs';
+import { WorkshopAttendeeExperienceLevel } from '../contracts/enums/workshop-attendee-experience-level';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,15 @@ export class MockApiServiceService {
       description: 'Learn how to build forms in Angular',
       linkedInUrl: 'https://www.linkedin.com/in/ryan-downey-1a2b3c4d/',
       gitHubUrl: '',
-      attendees: [],
+      attendees: [
+        {
+          id: '1',
+          name: 'Ryan Downey',
+          experience: WorkshopAttendeeExperienceLevel.Beginner,
+          dineIn: false,
+          lunchChoice: null,
+        },
+      ],
     };
     return of(workshop);
   }
