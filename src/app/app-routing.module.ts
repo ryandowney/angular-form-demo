@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { WorkshopComponent } from './pages/workshop/workshop.component';
 
 const routes: Routes = [
+  { path: '', component: WorkshopComponent },
   { path: 'workshop', component: WorkshopComponent },
   { path: 'workshop/:id', component: WorkshopComponent },
 ];
