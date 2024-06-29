@@ -22,6 +22,16 @@ export class WorkshopDataService {
     );
   }
 
+  async saveWorkshop(workshop: Workshop): Promise<Workshop> {
+    return lastValueFrom(
+      this.apiService.worShopStore(workshop).pipe(
+        map((workshop) => {
+          return workshop;
+        })
+      )
+    );
+  }
+
   private get blankWorkshop(): Nullable<Workshop> {
     return {
       id: emptyGuid,

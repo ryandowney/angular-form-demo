@@ -5,6 +5,7 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { emptyGuid } from 'src/app/const';
 import { Workshop } from 'src/app/contracts/workshop';
 import { WorkshopDataService } from 'src/app/data-services/workshop-data.service';
+import { WorkshopFormNames } from './forms/workshop-form-names';
 
 @UntilDestroy()
 @Component({
@@ -32,8 +33,22 @@ export class WorkshopComponent implements OnInit {
   protected logForm() {
     console.log(this.workshopForm);
   }
-  protected saveChanges() {
-    // TODO: get data save changes
+  protected async saveChanges() {
+    this.showForm = false;
+
+    const {
+      [WorkshopFormNames.Details]: detailsForm,
+      [WorkshopFormNames.Attendees]: attendeesFormArray,
+    } = this.workshopForm.getRawValue();
+
+    const workShop: Workshop = {
+      ...detailsForm,
+      attendees: attendeesFormArray,
+    };
+
+    this.workshop = await this.workshopDateService.saveWorkshop(workShop);
+
+    this.showForm = true;
   }
 
   private monitorForm = (): void => {

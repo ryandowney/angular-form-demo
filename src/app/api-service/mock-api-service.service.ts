@@ -28,4 +28,9 @@ export class MockApiServiceService {
     };
     return of(workshop);
   }
+
+  worShopStore(workshop: Workshop): Observable<Workshop> {
+    console.log(workshop);
+    return of(workshop);
+  }
 }
