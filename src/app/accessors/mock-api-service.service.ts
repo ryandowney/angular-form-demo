@@ -6,7 +6,7 @@ import { WorkshopAttendeeExperienceLevel } from '../contracts/enums/workshop-att
 @Injectable({
   providedIn: 'root',
 })
-export class MockApiServiceService {
+export class AccessorService {
   constructor() {}
   workShopLoad(): Observable<Workshop> {
     const workshop: Workshop = {

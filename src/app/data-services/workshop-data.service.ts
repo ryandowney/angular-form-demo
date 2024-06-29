@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Workshop } from '../contracts/workshop';
-import { MockApiServiceService } from '../api-service/mock-api-service.service';
 import { emptyGuid } from '../const';
 import { lastValueFrom, map } from 'rxjs';
+import { AccessorService } from '../accessors/mock-api-service.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WorkshopDataService {
-  constructor(private apiService: MockApiServiceService) {}
+  constructor(private accessorService: AccessorService) {}
 
   async getWorkshop(id: Guid): Promise<Workshop> {
     if (id === emptyGuid) return <Workshop>this.blankWorkshop;
 
     return lastValueFrom(
-      this.apiService.workShopLoad().pipe(
+      this.accessorService.workShopLoad().pipe(
         map((workshop) => {
           return workshop;
         })
@@ -24,7 +24,7 @@ export class WorkshopDataService {
 
   async saveWorkshop(workshop: Workshop): Promise<Workshop> {
     return lastValueFrom(
-      this.apiService.worShopStore(workshop).pipe(
+      this.accessorService.worShopStore(workshop).pipe(
         map((workshop) => {
           return workshop;
         })
