@@ -29,7 +29,7 @@ export class AccessorService {
     return of(workshop);
   }
 
-  worShopStore(workshop: Workshop): Observable<Workshop> {
+  workShopStore(workshop: Workshop): Observable<Workshop> {
     console.log(workshop);
     return of(workshop);
   }

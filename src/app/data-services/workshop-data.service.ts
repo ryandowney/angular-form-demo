@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Workshop } from '../contracts/workshop';
 import { emptyGuid } from '../const';
 import { lastValueFrom, map } from 'rxjs';
-import { AccessorService } from '../accessors/mock-api-service.service';
+import { AccessorService } from '../accessors/accessor.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +24,7 @@ export class WorkshopDataService {
 
   async saveWorkshop(workshop: Workshop): Promise<Workshop> {
     return lastValueFrom(
-      this.accessorService.worShopStore(workshop).pipe(
+      this.accessorService.workShopStore(workshop).pipe(
         map((workshop) => {
           return workshop;
         })
