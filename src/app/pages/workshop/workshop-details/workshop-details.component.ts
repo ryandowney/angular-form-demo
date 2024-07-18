@@ -7,8 +7,8 @@ import {
 } from '@angular/forms';
 import { WorkshopFormNames } from '../forms/workshop-form-names';
 import { Workshop } from 'src/app/contracts/workshop';
-import { emptyGuid } from 'src/app/const';
 import { WorkshopDetailsForm } from '../forms/workshop-details-form';
+import { Instructor } from 'src/app/contracts/instructor';
 
 @Component({
   selector: 'app-workshop-details',
@@ -23,7 +23,7 @@ export class WorkshopDetailsComponent implements OnInit {
   private parentForm!: FormGroup;
   private formName = WorkshopFormNames.Details;
   instructors: Instructor[] = [
-    { name: 'Ryan Downey', value: '9e50e55f-37ec-4d2a-ba65-3746b63e79c3' },
+    { name: 'Allen Turing', value: '9e50e55f-37ec-4d2a-ba65-3746b63e79c3' },
   ];
 
   ngOnInit() {
@@ -49,9 +49,4 @@ export class WorkshopDetailsComponent implements OnInit {
       gitHubUrl: new FormControl(workshop.gitHubUrl),
     });
   };
-}
-
-export interface Instructor {
-  name: string;
-  value: string;
 }
